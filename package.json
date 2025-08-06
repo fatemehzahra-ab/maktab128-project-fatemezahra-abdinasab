@@ -9,19 +9,44 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@heroui/badge": "^2.2.15",
+    "@heroui/button": "^2.2.24",
+    "@heroui/calendar": "^2.2.24",
+    "@heroui/card": "^2.2.23",
+    "@heroui/checkbox": "^2.3.24",
+    "@heroui/date-input": "^2.3.24",
+    "@heroui/date-picker": "^2.3.25",
+    "@heroui/dropdown": "^2.3.24",
+    "@heroui/form": "^2.1.24",
+    "@heroui/image": "^2.2.15",
+    "@heroui/input": "^2.4.25",
+    "@heroui/input-otp": "^2.1.24",
+    "@heroui/listbox": "^2.3.23",
+    "@heroui/menu": "^2.2.23",
+    "@heroui/navbar": "^2.2.22",
+    "@heroui/pagination": "^2.2.22",
+    "@heroui/react": "^2.8.2",
+    "@heroui/scroll-shadow": "^2.3.16",
+    "@heroui/system": "^2.4.20",
+    "@heroui/theme": "^2.4.20",
+    "autoprefixer": "^10.4.21",
+    "framer-motion": "^12.23.12",
+    "next": "15.4.5",
+    "postcss": "^8.5.6",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "next": "15.4.5"
+    "shabnam-font": "^5.0.0",
+    "vazirmatn": "^33.0.3"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4",
     "eslint": "^9",
     "eslint-config-next": "15.4.5",
-    "@eslint/eslintrc": "^3"
+    "tailwindcss": "^4.1.11",
+    "typescript": "^5"
   }
 }

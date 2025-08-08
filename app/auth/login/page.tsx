@@ -30,7 +30,7 @@ export default function LoginPage() {
                   type="text"
                   name="username"
                   required
-                  className="mt-2 block w-full rounded-md border-gray-300 shadow-sm border p-1 focus:ring focus:ring-indigo-200"
+                  className="mt-2 block w-full rounded-md border-gray-300 shadow-sm border p-1 focus:ring focus:ring-indigo-200 text-gray-600"
                 />
               </div>
 
@@ -42,7 +42,7 @@ export default function LoginPage() {
                   type="password"
                   name="password"
                   required
-                  className="mt-2 block w-full rounded-md border-gray-300 shadow-sm border p-1 focus:ring focus:ring-indigo-200"
+                  className="mt-2 block w-full rounded-md border-gray-300 shadow-sm border p-1 focus:ring focus:ring-indigo-200 text-gray-600"
                 />
               </div>
             </form>
@@ -55,12 +55,12 @@ export default function LoginPage() {
 
             <p className="text-xs text-gray-500 text-center mt-2">
               با ورود به{" "}
-              <span className="text-red-600 font-semibold">زیهوم</span>، شما
-              <a href="#" className="text-red-500 hover:underline mx-1">
+              <span className="text-primary font-semibold">زیهوم</span>، شما
+              <a href="#" className="text-primary hover:underline mx-1">
                 شرایط استفاده
               </a>
               و
-              <a href="#" className="text-red-500 hover:underline mx-1">
+              <a href="#" className="text-primary hover:underline mx-1">
                 قوانین حریم خصوصی
               </a>
               ما را می‌پذیرید.

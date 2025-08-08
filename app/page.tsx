@@ -1,6 +1,11 @@
-import * as React from "react";
-import LoginPage from "./auth/login/page";
+import Header from "./components/organism/header/Header";
+import Footer from "./components/organism/Footer";
 
 export default function Home() {
-  return <LoginPage />;
+  return (
+    <>
+      <Header />
+      <Footer />
+    </>
+  );
 }

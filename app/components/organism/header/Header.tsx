@@ -49,7 +49,6 @@ export default function Header() {
         </div>
       </div>
       <Navbar />
-      <Image src={"/images/hero.png"} alt={"hero"} width={1440} height={700} />
     </header>
   );
 }

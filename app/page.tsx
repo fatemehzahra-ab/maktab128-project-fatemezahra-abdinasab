@@ -1,11 +1,9 @@
-import Header from "./components/organism/header/Header";
-import Footer from "./components/organism/Footer";
+import Image from "next/image";
 
-export default function Home() {
+export default function HomePage() {
   return (
     <>
-      <Header />
-      <Footer />
+      <Image src={"/images/hero.svg"} alt={"hero"} width={1490} height={700} />
     </>
   );
 }

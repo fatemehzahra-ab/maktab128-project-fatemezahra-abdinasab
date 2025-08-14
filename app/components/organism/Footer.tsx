@@ -182,15 +182,18 @@ function Footer() {
               </div>
             </div>
 
-            <div className="flex items-center justify-center">
+            <div className="flex items-center justify-center gap-2">
               <Image
                 src="/icons/footer/undo.svg"
-                alt="Logo"
+                alt="undo"
                 width={32}
                 height={32}
               />
               <div className="flex flex-col">
-                <h4 className="font-bold mt-4">ضمانت بازگشت کالا</h4>
+                <h4 className="font-bold mt-4 flex gap-2">
+                  ضمانت بازگشت کالا
+                  <span className="text-natural-100 font-light">---------</span>
+                </h4>
                 <p className="text-sm text-gray-500">حداکثر ۱۰ روز کاری</p>
               </div>
             </div>

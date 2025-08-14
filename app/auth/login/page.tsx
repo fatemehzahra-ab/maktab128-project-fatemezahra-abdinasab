@@ -6,6 +6,7 @@ import { loginSchema, LoginInput } from "@/libs/authSchemas";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { Toaster, toast } from "sonner";
+import Link from "next/link";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -16,17 +17,20 @@ export default function LoginPage() {
     formState: { errors, isValid },
   } = useForm<LoginInput>({
     resolver: zodResolver(loginSchema),
+    mode: "onChange",
   });
 
   const onSubmit = async (data: LoginInput) => {
     try {
       await axios.post("http://127.0.0.1:8000/api/auth/login", data);
+      localStorage.setItem("loggedInUser", data.username);
       toast.success("با موفقیت وارد شدید");
       setTimeout(() => {
-        router.push("/");
+        router.push("/admin");
       }, 1000);
     } catch (err: any) {
       console.error(err.response?.data);
+      toast.error("نام کاربری یا رمز عبور اشتباه است");
     }
   };
 
@@ -50,7 +54,10 @@ export default function LoginPage() {
 
           <div className="bg-white rounded-2xl shadow p-6 space-y-4">
             <div className="flex justify-between items-center mb-2">
-              <span className="text-gray-700 font-medium">ورود | ثبت نام</span>
+              <span className="text-gray-700 font-medium">
+                <Link href={"/auth/login"}>ورود</Link> |{" "}
+                <Link href={"/auth/signup"}>ثبت نام</Link>
+              </span>
             </div>
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
@@ -96,6 +103,14 @@ export default function LoginPage() {
                 تایید
               </button>
             </form>
+
+            <Link href={"/auth/signup"}>
+              <p className="text-xs text-gray-500">
+                در صورتی که{" "}
+                <span className="text-primary font-semibold">ثبت نام</span>{" "}
+                نکرده اید کلیک کنید!
+              </p>
+            </Link>
 
             <p className="text-xs text-gray-500 text-center mt-2">
               با ورود به{" "}

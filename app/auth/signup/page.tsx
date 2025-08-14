@@ -5,6 +5,7 @@ import { signupSchema, SignupInput } from "@/libs/authSchemas";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { Toaster, toast } from "sonner";
+import Link from "next/link";
 
 export default function SignupPage() {
   const router = useRouter();
@@ -60,7 +61,10 @@ export default function SignupPage() {
 
           <div className="bg-white rounded-2xl shadow p-6 space-y-4">
             <div className="flex justify-between items-center mb-2">
-              <span className="text-gray-700 font-medium">ورود | ثبت نام</span>
+              <span className="text-gray-700 font-medium">
+                <Link href={"/auth/login"}>ورود</Link> |{" "}
+                <Link href={"/auth/signup"}>ثبت نام</Link>
+              </span>
             </div>
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">

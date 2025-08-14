@@ -3,7 +3,7 @@ import { z } from "zod";
 export const signupSchema = z.object({
   firstname: z.string().min(3, "نام باید بیشتر از ۳ حرف باشد"),
   lastname: z.string().min(4, "نام خانوادگی باید بیشتر از ۴ حرف باشد"),
-  username: z.string().min(6, "نام کاربری باید بیشتر از ۶ حرف باشد"),
+  username: z.string().min(5, "نام کاربری باید بیشتر از ۵ حرف باشد"),
   password: z
     .string()
     .min(8, { message: "نام کاربری باید بیشتر از ۸ حرف باشد" })
@@ -23,7 +23,7 @@ export const signupSchema = z.object({
 export type SignupInput = z.infer<typeof signupSchema>;
 
 export const loginSchema = z.object({
-  username: z.string().min(6, "نام کاربری باید بیشتر از ۶ حرف باشد"),
+  username: z.string().min(5, "نام کاربری باید بیشتر از ۶ حرف باشد"),
   password: z
     .string()
     .min(8, { message: "نام کاربری باید بیشتر از ۸ حرف باشد" })

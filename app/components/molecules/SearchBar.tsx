@@ -1,6 +1,11 @@
 import Image from "next/image";
 
-export default function SearchInput() {
+type SearchInputProps = {
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+};
+
+export default function SearchInput({ value, onChange }: SearchInputProps) {
   return (
     <div
       dir="rtl"
@@ -8,6 +13,8 @@ export default function SearchInput() {
     >
       <Image src="/icons/search.svg" alt={""} width={24} height={24} />
       <input
+        value={value}
+        onChange={onChange}
         type="text"
         placeholder="جستجو"
         className="flex-1 bg-transparent outline-none text-natural-700 placeholder-natural-400 w-[665px]"

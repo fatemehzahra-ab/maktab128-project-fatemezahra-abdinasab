@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function NotFound() {
   return (
     <div
-      className="bg-white max-w-[1440] h-dvh flex flex-col justify-center items-center"
+      className="bg-white max-w-[1500px] h-dvh flex flex-col justify-center items-center"
       dir="rtl"
     >
       <Image

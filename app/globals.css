@@ -1,15 +1,83 @@
 @import "tailwindcss";
+@plugin './hero.ts';
+@source '../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
+@custom-variant dark (&:is(.dark *));
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary: #dc2655;
+  --primary-100: #fdf2f6;
+  --primary-200: #fce7ef;
+  --primary-300: #fbcfe0;
+  --primary-400: #faa7c5;
+  --primary-500: #f5719e;
+  --primary-600: #ef5a88;
+  --primary-700: #bf173e;
+  --primary-800: #9e1634;
+  --primary-900: #84172f;
+  --primary-950: #510616;
+
+  --natural-50: #f0f1f1;
+  --natural-100: #e1e2e3;
+  --natural-200: #d1d4d4;
+  --natural-300: #c2c5c6;
+  --natural-400: #a4a9aa;
+  --natural-500: #858c8d;
+  --natural-600: #676f71;
+  --natural-700: #52595a;
+  --natural-800: #3e4344;
+  --natural-900: #292c2d;
+  --natural-950: #151617;
+
+  --error-700: #dc2626;
+  --error-600: #ed2e2e;
+  --error-500: #f87171;
+
+  --warning-700: #ec8514;
+  --warning-600: #f3a62c;
+  --warning-500: #f4b740;
+
+  --success-700: #008364;
+  --success-600: #00a478;
+  --success-500: #00ba88;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary: var(--primary);
+  --color-primary-100: var(--primary-100);
+  --color-primary-200: var(--primary-200);
+  --color-primary-300: var(--primary-300);
+  --color-primary-400: var(--primary-400);
+  --color-primary-500: var(--primary-500);
+  --color-primary-600: var(--primary-600);
+  --color-primary-700: var(--primary-700);
+  --color-primary-800: var(--primary-800);
+  --color-primary-900: var(--primary-900);
+  --color-primary-950: var(--primary-950);
+  --color-natural-50: var(--natural-50);
+  --color-natural-100: var(--natural-100);
+  --color-natural-200: var(--natural-200);
+  --color-natural-300: var(--natural-300);
+  --color-natural-400: var(--natural-400);
+  --color-natural-500: var(--natural-500);
+  --color-natural-600: var(--natural-600);
+  --color-natural-700: var(--natural-700);
+  --color-natural-800: var(--natural-800);
+  --color-natural-900: var(--natural-900);
+  --color-error-700: var(--error-700);
+  --color-error-600: var(--error-600);
+  --color-error-500: var(--error-500);
+  --color-warning-700: var(--warning-700);
+  --color-warning-600: var(--warning-600);
+  --color-warning-500: var(--warning-500);
+  --color-success-700: var(--success-700);
+  --color-success-600: var(--success-600);
+  --color-success-500: var(--success-500);
+  --color-natural-950: var(--natural-950);
+  --font-vazir: var(--font-vazir);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,5 +90,5 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Vazirmatn, sans-serif;
 }

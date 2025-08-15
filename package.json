@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@heroicons/react": "^2.2.0",
     "@heroui/badge": "^2.2.15",
     "@heroui/button": "^2.2.24",
     "@heroui/calendar": "^2.2.24",
@@ -16,6 +17,7 @@
     "@heroui/checkbox": "^2.3.24",
     "@heroui/date-input": "^2.3.24",
     "@heroui/date-picker": "^2.3.25",
+    "@heroui/drawer": "^2.2.21",
     "@heroui/dropdown": "^2.3.24",
     "@heroui/form": "^2.1.24",
     "@heroui/image": "^2.2.15",
@@ -29,15 +31,21 @@
     "@heroui/scroll-shadow": "^2.3.16",
     "@heroui/system": "^2.4.20",
     "@heroui/theme": "^2.4.20",
+    "@hookform/resolvers": "^5.2.1",
     "autoprefixer": "^10.4.21",
+    "axios": "^1.11.0",
     "framer-motion": "^12.23.12",
+    "lucide-react": "^0.539.0",
     "next": "15.4.5",
     "postcss": "^8.5.6",
     "react": "19.1.0",
     "react-dom": "19.1.0",
+    "react-hook-form": "^7.62.0",
     "react-icons": "^5.5.0",
     "shabnam-font": "^5.0.0",
-    "vazirmatn": "^33.0.3"
+    "sonner": "^2.0.7",
+    "vazirmatn": "^33.0.3",
+    "zod": "^4.0.16"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

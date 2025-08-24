@@ -3,14 +3,12 @@
 import SearchInput from "@/app/components/molecules/SearchBar";
 import ProductModal from "@/app/components/modals/UpdateProductModal";
 import DeleteModal from "@/app/components/modals/DeleteModal";
-import {
-  PlusIcon,
-  PencilIcon,
-  TrashIcon,
-  EyeIcon,
-} from "@heroicons/react/24/outline";
+import { PlusIcon, PencilIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { useState, useEffect } from "react";
 import { Pagination } from "@heroui/pagination";
+import { api } from "../../apis/url";
+import { getFullImageUrl } from "../../utils/url";
+import { makeAuthenticatedRequest } from "../../apis/request";
 
 export default function ProductsPage() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -22,6 +20,8 @@ export default function ProductsPage() {
   const [products, setProducts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
     async function fetchProducts() {
@@ -29,14 +29,13 @@ export default function ProductsPage() {
         setLoading(true);
         setError(null);
 
-        const res = await fetch("http://127.0.0.1:8000/api/products");
-        if (!res.ok) {
-          throw new Error("خطا در دریافت محصولات");
-        }
-        const data = await res.json();
+        const data = await makeAuthenticatedRequest(
+          `${api.products.list}?page=${page}&limit=10`,
+          { method: "GET" }
+        );
 
-        setProducts(data.data.products);
-        console.log(data.data.products[0]._id);
+        setProducts(data.data.products || []);
+        setTotalPages(data.total_pages || 1);
       } catch (err: any) {
         setError(err.message || "خطای ناشناخته");
       } finally {
@@ -45,7 +44,7 @@ export default function ProductsPage() {
     }
 
     fetchProducts();
-  }, []);
+  }, [page]);
 
   const filteredProducts = products.filter((product) => {
     const matchesSearch =
@@ -94,34 +93,53 @@ export default function ProductsPage() {
     setIsDeleteModalOpen(true);
   };
 
-  const handleSaveProduct = (productData: any) => {
-    if (modalMode === "create") {
-      const newProduct = {
-        ...productData,
-        id:
-          products.length > 0 ? Math.max(...products.map((p) => p._id)) + 1 : 1,
-        status: productData.quantity > 0 ? "active" : "out_of_stock",
-      };
-      setProducts([...products, newProduct]);
-    } else {
-      setProducts(
-        products.map((p) =>
-          p._id === selectedProduct._id
-            ? {
-                ...productData,
-                id: selectedProduct._id,
-                status: productData.quantity > 0 ? "active" : "out_of_stock",
-              }
-            : p
-        )
-      );
+  const handleSaveProduct = async (productData: any) => {
+    try {
+      if (modalMode === "create") {
+        const data = await makeAuthenticatedRequest(
+          `${api.products.list}?page=${page}&limit=10`,
+          { method: "GET" }
+        );
+        setProducts(data.data.products || []);
+        setTotalPages(data.total_pages || 1);
+      } else {
+        const data = await makeAuthenticatedRequest(
+          `${api.products.list}?page=${page}&limit=10`,
+          { method: "GET" }
+        );
+        setProducts(data.data.products || []);
+        setTotalPages(data.total_pages || 1);
+      }
+    } catch (err: any) {
+      setError(err.message || "خطا در بروزرسانی لیست محصولات");
     }
   };
 
-  const handleConfirmDelete = () => {
-    setProducts(products.filter((p) => p.name !== selectedProduct.name));
-    setIsDeleteModalOpen(false);
-    setSelectedProduct(null);
+  const handleConfirmDelete = async () => {
+    try {
+      if (selectedProduct && selectedProduct._id) {
+        await makeAuthenticatedRequest(
+          api.products.delete(selectedProduct._id),
+          {
+            method: "DELETE",
+          }
+        );
+
+        const data = await makeAuthenticatedRequest(
+          `${api.products.list}?page=${page}&limit=10`,
+          { method: "GET" }
+        );
+        setProducts(data.data.products || []);
+        setTotalPages(data.total_pages || 1);
+      }
+
+      setIsDeleteModalOpen(false);
+      setSelectedProduct(null);
+    } catch (err: any) {
+      setError(err.message || "خطا در حذف محصول");
+      setIsDeleteModalOpen(false);
+      setSelectedProduct(null);
+    }
   };
 
   if (loading) {
@@ -201,7 +219,7 @@ export default function ProductsPage() {
               لیست محصولات
             </h3>
             <span className="text-sm text-gray-500">
-              {filteredProducts.length} محصول یافت شد
+              {products.length} محصول یافت شد
             </span>
           </div>
         </div>
@@ -242,9 +260,7 @@ export default function ProductsPage() {
                   >
                     <td className="p-4">
                       <img
-                        src={
-                          product.thumbnail?.split("#")[0] || "/placeholder.svg"
-                        }
+                        src={getFullImageUrl(product.thumbnail)}
                         alt={product.name}
                         className="w-12 h-12 rounded-lg object-cover"
                       />
@@ -287,7 +303,12 @@ export default function ProductsPage() {
           </div>
         </div>
       </div>
-      <Pagination className="flex justify-center" initialPage={1} total={3} />
+      <Pagination
+        className="flex justify-center"
+        page={page}
+        total={totalPages}
+        onChange={setPage}
+      />
 
       <ProductModal
         isOpen={isProductModalOpen}

@@ -1,8 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Providers } from "./providers";
-import Header from "./components/organism/header/Header";
-import Footer from "./components/organism/Footer";
 
 <link
   href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css"
@@ -21,13 +18,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fa" className="dark">
-      <body>
-        {" "}
-        <Header />
-        <Providers>{children}</Providers>
-        <Footer />
-      </body>
+    <html lang="fa">
+      <body>{children}</body>
     </html>
   );
 }

@@ -7,6 +7,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { Toaster, toast } from "sonner";
 import Link from "next/link";
+import { api } from "../../../apis/url";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -22,9 +23,16 @@ export default function LoginPage() {
 
   const onSubmit = async (data: LoginInput) => {
     try {
-      await axios.post("http://127.0.0.1:8000/api/auth/login", data);
+      const res = await axios.post(api.auth.login, data);
+
+      if (res.data?.token) {
+        localStorage.setItem("Token", res.data.token.accessToken);
+        console.log(res.data.token.accessToken);
+      }
+
       localStorage.setItem("loggedInUser", data.username);
       toast.success("با موفقیت وارد شدید");
+
       setTimeout(() => {
         router.push("/admin");
       }, 1000);
@@ -100,7 +108,7 @@ export default function LoginPage() {
                     : "bg-gray-300 text-gray-500 cursor-not-allowed"
                 }`}
               >
-                تایید
+                ورود
               </button>
             </form>
 

@@ -2,10 +2,11 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signupSchema, SignupInput } from "@/libs/authSchemas";
-import axios from "axios";
 import { useRouter } from "next/navigation";
 import { Toaster, toast } from "sonner";
 import Link from "next/link";
+import { api } from "../../../apis/url";
+import axios from "axios";
 
 export default function SignupPage() {
   const router = useRouter();
@@ -23,24 +24,25 @@ export default function SignupPage() {
   });
 
   const onSubmit = async (data: SignupInput) => {
-    const signupPromise = axios.post(
-      "http://127.0.0.1:8000/api/auth/signup",
-      data
-    );
+    const signupPromise = axios.post(api.auth.signup, data);
     toast.promise(signupPromise, {
       loading: "در حال ثبت نام...",
       success: "ثبت نام با موفقیت انجام شد",
       error: "خطا در ثبت نام",
     });
+
     try {
-      await signupPromise;
+      const res = await signupPromise;
+      if (res.data?.token) localStorage.setItem("authToken", res.data.token);
+
       setTimeout(() => {
         router.push("/");
       }, 1000);
     } catch (err: any) {
-      console.error(err.response?.data);
+      console.error(err.response?.data || err.message);
     }
   };
+
   return (
     <div
       className="min-h-screen bg-cover bg-center flex items-center justify-center"
@@ -167,7 +169,7 @@ export default function SignupPage() {
                     : "bg-gray-300 text-gray-500 cursor-not-allowed"
                 }`}
               >
-                تایید
+                ثبت نام
               </button>
             </form>
 

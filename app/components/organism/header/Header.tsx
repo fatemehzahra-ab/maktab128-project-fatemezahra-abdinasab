@@ -23,7 +23,12 @@ export default function Header() {
         <Link href="/">
           <Image src="/icons/logo.svg" alt="Logo" width={125} height={56} />
         </Link>
-        <SearchInput />
+        <SearchInput
+          value={""}
+          onChange={function (e: React.ChangeEvent<HTMLInputElement>): void {
+            throw new Error("Function not implemented.");
+          }}
+        />
 
         <div className="flex gap-4 items-center divide-x divide-gray-300">
           <Link href={"/auth/login"}>

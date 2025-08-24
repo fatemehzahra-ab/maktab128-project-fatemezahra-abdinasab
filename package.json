@@ -44,8 +44,10 @@
     "react-icons": "^5.5.0",
     "shabnam-font": "^5.0.0",
     "sonner": "^2.0.7",
+    "swiper": "^11.2.10",
     "vazirmatn": "^33.0.3",
-    "zod": "^4.0.16"
+    "zod": "^4.0.16",
+    "zustand": "^5.0.8"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

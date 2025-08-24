@@ -1,4 +1,8 @@
 @import "tailwindcss";
+@import "swiper/css";
+@import "swiper/css/navigation";
+@import "swiper/css/pagination";
+
 @plugin './hero.ts';
 @source '../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
 @custom-variant dark (&:is(.dark *));
@@ -90,5 +94,10 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Vazirmatn, sans-serif;
+  /* font-family: Vazirmatn, sans-serif; */
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  color: theme(colors.primary.DEFAULT);
 }

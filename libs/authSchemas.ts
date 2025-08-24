@@ -6,14 +6,14 @@ export const signupSchema = z.object({
   username: z.string().min(5, "نام کاربری باید بیشتر از ۵ حرف باشد"),
   password: z
     .string()
-    .min(8, { message: "نام کاربری باید بیشتر از ۸ حرف باشد" })
+    .min(8, { message: "پسورد  باید بیشتر از ۸ حرف باشد" })
     .regex(/[A-Z]/, {
       message: "پسورد باید شامل حروف بزرگ باشد",
     })
     .regex(/[a-z]/, {
       message: "پسورد باید شامل حروف کوچک باشد",
     })
-    .regex(/[@]/, { message: "پسورد باید شامل اشکال مختلف باشد" }),
+    .regex(/[@]/, { message: "پسورد باید شامل کاراکترهای خاص باشد" }),
   phoneNumber: z
     .string()
     .regex(/^(?:09|۰۹)[0-9۰-۹]{9}$/, "شماره تلفن همراه باید معتبر باشد"),
@@ -26,14 +26,14 @@ export const loginSchema = z.object({
   username: z.string().min(5, "نام کاربری باید بیشتر از ۶ حرف باشد"),
   password: z
     .string()
-    .min(8, { message: "نام کاربری باید بیشتر از ۸ حرف باشد" })
+    .min(8, { message: "پسورد  باید بیشتر از ۸ حرف باشد" })
     .regex(/[A-Z]/, {
       message: "پسورد باید شامل حروف بزرگ باشد",
     })
     .regex(/[a-z]/, {
       message: "پسورد باید شامل حروف کوچک باشد",
     })
-    .regex(/[@]/, { message: "پسورد باید شامل اشکال مختلف باشد" }),
+    .regex(/[@]/, { message: "پسورد باید شامل کاراکترهای خاص باشد" }),
 });
 
 export type LoginInput = z.infer<typeof loginSchema>;

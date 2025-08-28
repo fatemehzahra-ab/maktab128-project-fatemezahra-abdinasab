@@ -1,58 +1,36 @@
 "use client";
 
 import Link from "next/link";
-import SearchInput from "../../molecules/SearchBar";
 import Image from "next/image";
+import SearchInput from "../../molecules/SearchBar";
 import Navbar from "./Navbar";
+import UserMenu from "../../atom/UserMenu";
+import CartBadge from "../../atom/CartBadge"; // Adjust path if needed
 
 export default function Header() {
   return (
-    <header className="w-full text-sm">
-      <div
-        className="bg-natural-900 text-white flex justify-between px-6 py-2"
-        dir="rtl"
-      >
+    <header
+      dir="rtl"
+      className="w-full text-sm fixed top-0 left-0 right-0 z-50"
+    >
+      <div className="bg-natural-900 text-white flex justify-between px-6 py-2">
         <span>خرید بیش از یک میلیون تومان ارسال رایگان | خدمات رایگان</span>
         <span>۵۰٪ تخفیف | فروش بهاره</span>
       </div>
 
-      <div
-        className="flex items-center justify-between px-6 py-4 bg-white border-b"
-        dir="rtl"
-      >
+      <div className="flex items-center justify-between px-6 py-4 bg-white border-b">
         <Link href="/">
           <Image src="/icons/logo.svg" alt="Logo" width={125} height={56} />
         </Link>
-        <SearchInput
-          value={""}
-          onChange={function (e: React.ChangeEvent<HTMLInputElement>): void {
-            throw new Error("Function not implemented.");
-          }}
-        />
 
-        <div className="flex gap-4 items-center divide-x divide-gray-300">
-          <Link href={"/auth/login"}>
-            <button className="flex items-center gap-1 border mx-4 px-3 py-1 rounded-lg border-natural-100 text-natural-800 cursor-pointer ">
-              <Image
-                src="/icons/user.svg"
-                alt="login user icon"
-                width={24}
-                height={24}
-              />{" "}
-              ثبت نام / ورود
-            </button>
-          </Link>
+        <SearchInput value={""} onChange={() => {}} />
 
-          <button className="flex">
-            <Image
-              src="/icons/shopping.svg"
-              alt="login user icon"
-              width={24}
-              height={24}
-            />
-          </button>
+        <div className="flex items-center gap-6">
+          <UserMenu />
+          <CartBadge />
         </div>
       </div>
+
       <Navbar />
     </header>
   );

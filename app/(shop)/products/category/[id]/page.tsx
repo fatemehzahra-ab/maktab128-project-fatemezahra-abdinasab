@@ -24,7 +24,7 @@ export default function CategoryPage() {
   return (
     <div
       dir="rtl"
-      className="max-w-full bg-white mx-auto px-4 py-20 text-natural-900"
+      className="max-w-full bg-white mx-auto px-4 py-20 text-natural-900 pt-46"
     >
       {loading && <p className="text-center">در حال بارگذاری...</p>}
       {error && <p className="text-center text-red-600">{error}</p>}

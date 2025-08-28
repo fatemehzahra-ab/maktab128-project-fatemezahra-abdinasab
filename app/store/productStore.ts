@@ -6,6 +6,7 @@ import { Category, Product } from "../../types/products";
 type ProductStore = {
   products: Product[];
   categories: Category[];
+
   loading: boolean;
   error: string | null;
   fetchData: () => Promise<void>;

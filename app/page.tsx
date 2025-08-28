@@ -50,7 +50,13 @@ export default function Home() {
   return (
     <>
       <Header />
-      <Image src={"/images/hero.svg"} alt={"hero"} width={1490} height={700} />
+      <Image
+        src={"/images/hero.svg"}
+        alt={"hero"}
+        width={1490}
+        height={700}
+        className="pt-40"
+      />
 
       <div dir="rtl" className="bg-white text-natural-900">
         <section className="py-16 bg-gradient-to-b from-muted/20 to-muted/10">
@@ -60,7 +66,7 @@ export default function Home() {
                 دسته‌بندی محصولات
               </h2>
               <p className="text-gray-600 max-w-2xl mx-auto">
-                محصولات متنوع ما را در دسته‌بندی‌های مختلف کاوش کنید
+                محصولات متنوع ما در دسته‌بندی‌های مختلف
               </p>
             </div>
 

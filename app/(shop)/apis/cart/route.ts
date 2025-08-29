@@ -12,7 +12,7 @@ type CartItem = {
 const memory: Record<string, CartItem[]> = {};
 
 export async function GET(req: NextRequest) {
-  const userId = req.nextUrl.searchParams.get("userId") || "";
+  const userId = localStorage.getItem("loggedInUserId");
   if (!userId)
     return NextResponse.json({ error: "userId required" }, { status: 400 });
   return NextResponse.json({ items: memory[userId] ?? [] });

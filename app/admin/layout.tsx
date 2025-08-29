@@ -7,8 +7,8 @@ import {
   ShoppingCart,
   Package,
   DollarSign,
-  BarChart3,
-  Settings,
+  House,
+  LogOut,
 } from "lucide-react";
 import { useRouter, usePathname } from "next/navigation";
 import { Button } from "@heroui/button";
@@ -50,8 +50,18 @@ export default function AdminLayout({
       icon: Package,
       path: "/admin/products",
     },
-    { id: "analytics", label: "گزارش‌ها", icon: BarChart3, path: "/analytics" },
-    { id: "settings", label: "تنظیمات", icon: Settings, path: "/settings" },
+    {
+      id: "home",
+      label: "صفحه خرید",
+      icon: House,
+      path: "/",
+    },
+    {
+      id: "settings",
+      label: "خروج از حساب کاربری",
+      icon: LogOut,
+      path: "/",
+    },
   ];
 
   return (

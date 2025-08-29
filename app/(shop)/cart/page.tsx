@@ -4,9 +4,10 @@ import Image from "next/image";
 import { useCartStore } from "../../store/cartStore";
 import { ShoppingCart, Trash2, Package } from "lucide-react";
 import { getFullImageUrl } from "@/app/utils/url";
+import Link from "next/link";
 
 export default function CartPage() {
-  const { items, updateQty, removeItem, clearCart } = useCartStore();
+  const { items, updateQty, removeItem } = useCartStore();
   const total = items.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
@@ -152,9 +153,11 @@ export default function CartPage() {
                 </div>
               </div>
 
-              <button className="w-full bg-primary text-white py-3 px-4 rounded-lg mt-6 font-medium hover:bg-primary/90">
-                تایید و ادامه خرید
-              </button>
+              <Link href={"/checkout"}>
+                <button className="w-full bg-primary text-white py-3 px-4 rounded-lg mt-6 font-medium hover:bg-primary/90">
+                  تایید و ادامه خرید
+                </button>
+              </Link>
             </div>
           </div>
         </div>

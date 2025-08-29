@@ -28,6 +28,7 @@ export default function LoginPage() {
       if (res.data?.token) {
         localStorage.setItem("Token", res.data.token.accessToken);
         console.log(res.data.token.accessToken);
+        localStorage.setItem("loggedInUserId", res.data.data.user._id);
       }
 
       localStorage.setItem("loggedInUser", data.username);
